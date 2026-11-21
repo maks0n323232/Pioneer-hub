@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pioneer Hub — Хаб первопроходца</title>
+
+<style>
+:root {
+  --bg: #090e14;
+  --panel: #141d27;
+  --gold: #d8b77a;
+  --text: #e9e5dc;
+  --muted: #9da7b3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+}
+
+header {
+  background: #101821;
+  border-bottom: 1px solid #6b5638;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--gold);
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.menu {
+  font-size: 27px;
+  cursor: pointer;
+  color: var(--gold);
+}
+
+nav {
+  display: none;
+  background: #111923;
+  padding: 15px;
+}
+
+nav.active {
+  display: block;
+}
+
+nav a {
+  display: block;
+  padding: 13px;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid #28323d;
+}
+
+.hero {
+  min-height: 370px;
+  padding: 65px 20px;
+  text-align: center;
+  background:
+    linear-gradient(
+      rgba(5,10,16,.55),
+      rgba(5,10,16,.98)
+    ),
+    radial-gradient(
+      circle at center,
+      #46576b,
+      #090e14 75%
+    );
+}
+
+.hero h1 {
+  font-size: 43px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #c4cbd2;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 27px;
+  background: linear-gradient(
+    135deg,
+    #e2c58d,
+    #927044
+  );
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 30px 18px;
+}
+
+.section-title {
+  text-align: center;
+  color: var(--gold);
+  font-size: 28px;
+  margin-bottom: 28px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
+  gap: 18px;
+}
+
+.card {
+  background: linear-gradient(
+    145deg,
+    #1c2834,
+    #101720
+  );
+  border: 1px solid #574a35;
+  border-radius: 9px;
+  padding: 25px;
+  text-align: center;
+  transition: .3s;
+}
+
+.card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+}
+
+.icon {
+  font-size: 43px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: var(--gold);
+  font-size: 22px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.search {
+  width: 100%;
+  padding: 16px;
+  background: #121b25;
+  border: 1px solid #75613e;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+}
+
+footer {
+  text-align: center;
+  padding: 35px;
+  background: #101821;
+  border-top: 1px solid #55472f;
+  color: #89939d;
+  font-size: 13px;
+}
+
+@media(min-width:800px) {
+  .hero h1 {
+    font-size: 65px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">⚔ PIONEER HUB</div>
+  <div class="menu" onclick="toggleMenu()">☰</div>
+</header>
+
+<nav id="navigation">
+  <a href="#home">Главная</a>
+  <a href="#database">База знаний</a>
+  <a href="#classes">Классы и билды</a>
+  <a href="#equipment">Экипировка</a>
+  <a href="#map">Карта мира</a>
+  <a href="#trade">Торговля</a>
+</nav>
+
+<section class="hero" id="home">
+
+<h1>PIONEER HUB</h1>
+
+<p>
+Хаб первопроходца<br>
+Русскоязычный портал по ArcheAge Chronicles
+</p>
+
+<p>
+Исследуй мир. Создавай легенды.<br>
+Открывай секреты вместе с нами.
+</p>
+
+<a href="#database" class="btn">
+Начать путешествие
+</a>
+
+</section>
+
+<main class="container">
+
+<h2 class="section-title" id="database">
+База знаний
+</h2>
+
+<input
+  class="search"
+  id="search"
+  type="search"
+  placeholder="Поиск по разделам..."
+  oninput="searchCards()"
+>
+
+<div class="grid" style="margin-top:25px">
+
+<div class="card" id="classes">
+  <div class="icon">⚔️</div>
+  <h3>Классы и билды</h3>
+  <p>
+    Руководства по развитию персонажей,
+    навыкам и боевым стратегиям.
+  </p>
+  <a href="#" onclick="showSoon(event)">
+    Открыть →
+  </a>
+</div>
+
+<div class="card" id="equipment">
+  <div class="icon">🛡️</div>
+  <h3>Оружие и броня</h3>
+  <p>
+    Каталог экипировки, характеристик
+    и комплектов снаряжения.
+  </p>
+  <a href="#" onclick="showSoon(event)">
+    Открыть →
+  </a>
+</div>
+
+<div class="card" id="map">
+  <div class="icon">🗺️</div>
+  <h3>Карта мира</h3>
+  <p>
+    Локации, боссы, ресурсы
+    и интересные места.
+  </p>
+  <a href="#" onclick="showSoon(event)">
+    Открыть →
+  </a>
+</div>
+
+<div class="card" id="trade">
+  <div class="icon">💰</div>
+  <h3>Торговля</h3>
+  <p>
+    Торговые маршруты,
+    экономика и полезные инструменты.
+  </p>
+  <a href="#" onclick="showSoon(event)">
+    Открыть →
+  </a>
+</div>
+
+<div class="card">
+  <div class="icon">🐉</div>
+  <h3>Боссы</h3>
+  <p>
+    Информация о мировых боссах,
+    механиках и наградах.
+  </p>
+  <a href="#" onclick="showSoon(event)">
+    Открыть →
+  </a>
+</div>
+
+<div class="card">
+  <div class="icon">📜</div>
+  <h3>Гайды</h3>
+  <p>
+    Советы новичкам,
+    секреты и полезные руководства.
+  </p>
+  <a href="#" onclick="showSoon(event)">
+    Открыть →
+  </a>
+</div>
+
+</div>
+</main>
+
+<footer>
+  <p>© 2026 Pioneer Hub</p>
+  <p>Независимый фанатский проект</p>
+  <p>Создан для сообщества ArcheAge Chronicles</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document
+    .getElementById("navigation")
+    .classList.toggle("active");
+}
+
+function showSoon(event) {
+  event.preventDefault();
+  alert("Раздел находится в разработке!");
+}
+
+function searchCards() {
+  const query = document
+    .getElementById("search")
+    .value.toLowerCase();
+
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+
+    card.style.display =
+      text.includes(query) ? "" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
